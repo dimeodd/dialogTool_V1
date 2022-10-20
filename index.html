@@ -1,0 +1,72 @@
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="js/main.js"></script>
+    <script src="js/nodes.js"></script>
+    <script src="js/workspace.js"></script>
+    <script src="js/toolbar.js"></script>
+    <script src="js/lineTools.js"></script>
+    <script src="js/nodeHelper.js"></script>
+
+    <script src="js/cmd/commandHelper.js"></script>
+    <script src="js/cmd/CommandList.js"></script>
+
+    <script src="js/ext/conMenu.js"></script>
+    <script src="js/ext/mousePos.js"></script>
+    <script src="js/ext/elementFactory.js"></script>
+
+    <title>Workspace</title>
+</head>
+
+<body>
+    <svg id="content_svg" class="workspace">
+        <g stroke="black" stroke-width="2" fill="none">
+            <path d="M200 250 h 180 v 90 h -180 Z" fill="beige" stroke="black" />
+            <circle cx="200" cy="250" r="2" fill="red" />
+            <circle cx="380" cy="340" r="2" fill="red" />
+            <circle cx="380" cy="250" r="2" fill="red" />
+            <circle cx="200" cy="340" r="2" fill="red" />
+            <path d="M200 290 L20 290" stroke="black" />
+        </g>
+    </svg>
+
+    <div id="content_node" class="node_list workspace">
+    </div>
+
+    <div id="header" class="ui_style">
+        <button>[PH] Menu</button><button>[PH] Edit</button>
+        <label for="questName">Название квеста:</label>
+        <input id="questName" type="text" oninput="workspace.rename(this.value);"></input>
+        <label for="checkRU">RU</label>
+        <input id="checkRU" type="checkbox" onclick="toggleRU(this.checked)" checked></input>
+        <label for="checkEN">EN</label>
+        <input id="checkEN" type="checkbox" onclick="toggleEN(this.checked)" checked></input>
+        <br>
+        <button onclick="newFile()">New File</button>
+        <br>
+        <button onclick="saveFile()">Save</button>
+        <br>
+        <button onclick="openFile()">Open File</button>
+    </div>
+
+    <div id="toolbar" class="ui_style draggable">
+        Tools
+        <button onclick="createDialogNode()">dialogNode</button>
+        <button onclick="createBranchNode()">branchNode</button>
+        <button onclick="createCommandNode()">commandNode</button>
+        <br><br>
+        <button onclick="go_ToStart()">to start</button>
+        <button onclick="workspace.UpdateView()">reset dialogField</button>
+    </div>
+
+    <div id="help_info" class="unselectable">
+        ПКМ - двигать поле<br>
+        Ctrl+Wheel - Zoom
+    </div>
+</body>
+
+</html>
